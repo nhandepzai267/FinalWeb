@@ -14,7 +14,7 @@ include './connect_db.php';
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <title>Computer Store mua bán thiết bị điện tử giá rẻ</title>
+    <title>Chi tiết đơn hàng</title>
     <meta name="description"
         content="Chuyên cung cấp đầy đủ linh kiện điện tử đáp ứng theo nhu cầu của khách hàng">
     <meta name="keywords" content="nhà sách online, mua sách hay, sách hot, sách bán chạy, sách giảm giá nhiều">

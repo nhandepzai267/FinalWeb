@@ -21,6 +21,7 @@ if(!isset($_SESSION))
 
 </style>
 <head>
+    <title>Computer Store</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

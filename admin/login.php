@@ -48,7 +48,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
         <style>
             :root {
-                --primary-color: #4e73df;
+                --primary-color: #dc3545;
                 --secondary-color: #858796;
                 --background-color: #f8f9fc;
                 --card-color: #ffffff;
@@ -83,7 +83,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
             .login-left {
                 flex: 1;
                 padding: 3rem;
-                background: linear-gradient(145deg, var(--primary-color), #224abe);
+                background: linear-gradient(145deg, var(--primary-color), #bd2130);
                 color: white;
                 display: flex;
                 flex-direction: column;
@@ -110,17 +110,19 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
                 box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
             }
 
-            .btn-login {
-                padding: 0.75rem;
+            .btn-danger.btn-login {
+                background-color: #dc3545 !important;
+                border-color: #dc3545 !important;
+                color: white !important;
+                /* padding: 0.75rem; */
                 border-radius: 0.5rem;
-                background: var(--primary-color);
-                border: none;
                 font-weight: 600;
                 transition: all 0.3s ease;
             }
 
-            .btn-login:hover {
-                background: #224abe;
+            .btn-danger.btn-login:hover {
+                background-color: #c82333 !important;
+                border-color: #bd2130 !important;
                 transform: translateY(-1px);
             }
 
@@ -212,7 +214,7 @@ if (isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pas
                                 </div>
 
                                 <div class="mb-4">
-                                    <button type="submit" class="btn btn-primary btn-login w-100">
+                                    <button type="submit" class="btn btn-danger btn-login w-100">
                                         Đăng nhập
                                     </button>
                                 </div>

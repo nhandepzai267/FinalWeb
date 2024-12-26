@@ -47,7 +47,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
+    <title>Danh muc san pham</title>
     <!-- Favicon-->
     <link rel="icon" type="../logo/png" sizes="32x32" href="../logo/logo.png">
 

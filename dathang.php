@@ -5,8 +5,8 @@ if(!isset($_SESSION))
 }
 include './connect_db.php';
 
-
-
+// Lấy thông tin user từ session nếu đã đăng nhập
+$user_info = isset($_SESSION['user']) ? $_SESSION['user'] : null;
 ?>
 <style>
 * {
@@ -15,6 +15,16 @@ include './connect_db.php';
 
 input[type=text], select, textarea {
   width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+/* Thêm style riêng cho input type email */
+input[type=email] {
+  width: 100%;  /* Chiều rộng 100% của container */
+  min-width: 300px; /* Độ rộng tối thiểu */
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -142,7 +152,9 @@ lên nhau thay vì nằm cạnh nhau */
       <label for="name">Họ và tên</label>
     </div>
     <div class="col-75">
-      <input type="text" id="name" name="name" placeholder="Tên của bạn">
+      <input type="text" id="name" name="name" 
+             value="<?php echo isset($user_info['fullname']) ? $user_info['fullname'] : ''; ?>" 
+             placeholder="Tên của bạn">
     </div>
   </div>
   <div class="row">
@@ -150,7 +162,9 @@ lên nhau thay vì nằm cạnh nhau */
       <label for="email">Email</label>
     </div>
     <div class="col-75">
-      <input type="email" id="email" name="email" placeholder="Nhập email của bạn">
+      <input type="email" id="email" name="email" 
+             value="<?php echo isset($user_info['email']) ? $user_info['email'] : ''; ?>" 
+             placeholder="Nhập email của bạn">
     </div>
   </div>
   <div class="row">
@@ -158,7 +172,9 @@ lên nhau thay vì nằm cạnh nhau */
     <label for="address">Địa chỉ</label>
     </div>
     <div class="col-75">
-    <input type="text" id="address" name="address" placeholder="Địa chỉ">
+    <input type="text" id="address" name="address" 
+           value="<?php echo isset($user_info['address']) ? $user_info['address'] : ''; ?>" 
+           placeholder="Địa chỉ">
     </div>
   </div>
   <div class="row">
@@ -166,7 +182,9 @@ lên nhau thay vì nằm cạnh nhau */
       <label for="phone">Số điện thoại</label>
     </div>
     <div class="col-75">
-    <input type="phone" id="phone" name="phone" placeholder="Số điện thoại">
+    <input type="phone" id="phone" name="phone" 
+           value="<?php echo isset($user_info['sdt']) ? $user_info['sdt'] : ''; ?>" 
+           placeholder="Số điện thoại">
     </div>
   </div>
   <div class="row">

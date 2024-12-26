@@ -1,5 +1,7 @@
 <link rel="icon" type="logo/png" sizes="32x32" href="logo/logo.png">
 <?php
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -34,7 +36,7 @@ if ($name == '' || $address == '' || $phone == '' || $email == '') {
     }
     $stmt->close();
 }
-$sql = mysqli_query($con, "SELECT * FROM orders WHERE `user_id`= $userid");
+$sql = mysqli_query($con, "SELECT * FROM orders WHERE `user_id`= $userid ORDER BY created_time DESC");
 $sql = mysqli_fetch_all($sql, MYSQLI_ASSOC);
 // echo"<pre>";
 // print_r($sql);
@@ -106,7 +108,7 @@ www.computerstore.com";
 <html lang="vi">
 
 <head>
-    <title>Computer Store mua bán thiết bị điện tử giá rẻ</title>
+    <title>Đơn hàng của bạn</title>
     <meta name="description" content="Chuyên cung cấp đầy đủ linh kiện điện tử đáp ứng theo nhu cầu của khách hàng">
     <meta name="keywords" content="nhà sách online, mua sách hay, sách hot, sách bán chạy, sách giảm giá nhiều">
     <meta charset="UTF-8">
@@ -174,6 +176,7 @@ www.computerstore.com";
                         <th>SDT</th>
                         <th>Địa chỉ</th>
                         <th>Nội dung</th>
+                        <th>Ngày đặt hàng</th>
                         <th>Tình trạng</th>
                         <th>Chi tiết đơn hàng</th>
                     </tr>
@@ -189,6 +192,7 @@ www.computerstore.com";
                             <td><?php echo $value['phone'] ?></td>
                             <td><?php echo $value['address'] ?></td>
                             <td><?php echo $value['content'] ?></td>
+                            <td><?php echo date('d/m/Y H:i', $value['created_time']) ?></td>
                             <?php
                             if ($value['status'] == 0) {
                                 echo '<td class="text-danger">Đang Xử Lý</td>';

@@ -22,6 +22,7 @@
         $rpassword = $_POST['rpassword'];
         $sdt = $_POST['sdt'];
         $gioitinh = $_POST['gioitinh'];
+        $address = $_POST['address'];
 
         if(empty($fullname))
         {
@@ -51,9 +52,13 @@
         {
             $error['gioitinh'] ='*Bạn chưa nhập Giới tính';
         }
+        if(empty($address))
+        {
+            $error['address'] = '*Bạn chưa nhập địa chỉ';
+        }
         if(empty($error))
         {
-        $sql = mysqli_query($con,"INSERT INTO `user`(`fullname`, `email`, `username`, `password`, `sdt`, `gioitinh`, `created_time`, `last_updated`) VALUES ('$fullname','$email', '$username', MD5('$password'),'$sdt', '$gioitinh', " . time() . ", '" . time() . "')");
+        $sql = mysqli_query($con,"INSERT INTO `user`(`fullname`, `email`, `username`, `password`, `sdt`, `gioitinh`, `address`, `created_time`, `last_updated`) VALUES ('$fullname','$email', '$username', MD5('$password'),'$sdt', '$gioitinh', '$address', " . time() . ", '" . time() . "')");
        
         if($sql)
         {
@@ -75,7 +80,7 @@
         }
     </style>
 <head>
-<title>Register</title>
+<title>Đăng ký</title>
 <!-- for-mobile-apps -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -137,6 +142,11 @@
                 <span>
                         <?php echo (isset($error['sdt'])) ? $error['sdt']:''?>
                     </span>
+                </div>
+                <h5>Địa chỉ</h5>
+                <input type="text" name="address" value="" /><br/>
+                <div class="has-error">
+                    <span><?php echo (isset($error['address'])) ? $error['address']:''?></span>
                 </div>
 				<h5>Giới tính</h5>
                 <div class="has-error">

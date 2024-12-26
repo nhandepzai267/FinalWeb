@@ -1,4 +1,7 @@
 <link rel="icon" type="logo/png" sizes="32x32" href="logo/logo.png">
+<head>
+  <title>Đăng nhập</title>
+</head>
 <?php
 session_start();
 ?>
@@ -12,6 +15,7 @@ session_start();
 */
 
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400');
+
 
 body, html {
   font-family: 'Source Sans Pro', sans-serif;

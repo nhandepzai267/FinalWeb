@@ -4,7 +4,7 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-$category = mysqli_query($con, "SELECT * FROM `orders`  ");
+$category = mysqli_query($con, "SELECT * FROM `orders` ");
 //B1: tính tổng số bản ghi
 
 $total = mysqli_num_rows($category);
@@ -18,7 +18,7 @@ $current_page = (isset($_GET['page']) ? $_GET['page'] : 1);
 //B5: tính start
 $start = ($current_page - 1) * $limit;
 //B6: query sử dụng limit
-$category = mysqli_query($con,"SELECT * FROM `orders` LIMIT $start,$limit");
+$category = mysqli_query($con,"SELECT * FROM `orders` ORDER BY created_time DESC");
     ?>
 <!DOCTYPE html>
 <html>
@@ -58,7 +58,7 @@ $category = mysqli_query($con,"SELECT * FROM `orders` LIMIT $start,$limit");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
+    <title>Quan ly don hang</title>
     <!-- Favicon-->
     <link rel="icon" type="../logo/png" sizes="32x32" href="../logo/logo.png">
 
@@ -166,14 +166,16 @@ $category = mysqli_query($con,"SELECT * FROM `orders` LIMIT $start,$limit");
                                             <th>Số điện thoại </th>
                                             <th>Địa chỉ</th>
                                             <th>Nội dung</th>
+                                            <th>Ngày đặt hàng</th>
                                             <th>Tình trạng</th>
+                                            <th>Chi tiết</th>
                                             <th>Sửa</th>
                                             <th>Xóa</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                    date_default_timezone_set('Asia/Saigon');
+                                    date_default_timezone_set('Asia/Ho_Chi_Minh');
                                     while ($row = mysqli_fetch_array($category)) {
                                     ?>
                                         <tr> 
@@ -184,6 +186,7 @@ $category = mysqli_query($con,"SELECT * FROM `orders` LIMIT $start,$limit");
                                         <td><?php echo $row['phone'] ?></td>
                                         <td><?php echo $row['address'] ?></td>
                                         <td><?php echo $row['content'] ?></td>
+                                        <td><?php echo date('d/m/Y H:i', $row['created_time']) ?></td>
                                         <?php
                                         if ($row['status']==0) 
                                         {
@@ -200,6 +203,9 @@ $category = mysqli_query($con,"SELECT * FROM `orders` LIMIT $start,$limit");
                                         else
                                             echo '<td class="text-danger">Đơn hàng bị hủy</td>';
                                         ?>
+                                    <td>
+                                        <a href="chitietdonhang.php?id=<?= $row['id'] ?>" class="btn btn-danger">Chi tiết</a>
+                                    </td>    
                                     <td>
                                         <a href="./edit_donhang.php?id=<?= $row['id'] ?> " class="btn btn-danger">Edit</a>
                                     </td>
